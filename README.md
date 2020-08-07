@@ -1,6 +1,6 @@
 import java.sql.*;
 import java.util.Scanner;
-public class BankTransfer
+public class BankTransaction
 {
        public static void main (String args []) throws Exception
        {
