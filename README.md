@@ -1,6 +1,6 @@
 import java.sql.*;
 import java.util.Scanner;
-public class BankingTest
+public class BankTransfer
 {
        public static void main (String args []) throws Exception
        {
@@ -12,7 +12,7 @@ public class BankingTest
              System.out.println ("Enter the amount to transfer :");
              int amnt = s.nextInt ();
              Class.forName ("oracle.jdbc.driver.OracleDriver :");
-             Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott", "tiger");
+             Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "god", "12345");
              Statement st = cn.createStatement ();
              cn.setAutoCommit (false);
              ResultSet rs = st.executeQuery ("select avail_balance from account_balance where account_number="+saccno);
@@ -20,12 +20,12 @@ public class BankingTest
              int abal = rs.getInt (1);
              if (abal>amnt)
             {
-                 int up = st.executeUpdate ("update account_balance set avail_balance =avail_balance-"+amnt+ "where account_number="+saccno);
-                 int up1 = st.executeUpdate ("update account_balance set avail_balance = avail_balance-"+amnt+ "where account_number="+daccno);
-                 if (up==1 && up1==1)
+                 int upd = st.executeUpdate ("update account_balance"+amnt+ " account_number="+saccno);
+                 int upd1 = st.executeUpdate ("update account_balance"+amnt+ " account_number="+daccno);
+                 if (upd==1 && upd1==1)
                  {
                      cn.commit ();
-                     System.out.println ("*******: "+amnt+" balance is successfully Transferred:*******");
+                     System.out.printl(amnt+" balance is successfully Transferred:*******");
                  }
                  else
                  {
@@ -35,7 +35,16 @@ public class BankingTest
             }
             else
             {
-                System.out.println ("You does not have sufficient balance !!! please deposit in your account.");
+                System.out.println ("There is no sufficient balance");
             }
         }
 }
+
+
+
+![image](https://user-images.githubusercontent.com/51279124/89650637-9aeaac00-d877-11ea-91f4-7fba500714df.png)
+![image](https://user-images.githubusercontent.com/51279124/89650678-a50caa80-d877-11ea-97a8-7fdd9561c6bd.png)
+
+
+
+
